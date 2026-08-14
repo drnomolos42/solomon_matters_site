@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./styles.css">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+  details[open] .sm-plus { transform: rotate(45deg); }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: var(--color-bg); border-bottom: 2px solid var(--color-divider); display: flex; align-items: center; gap: 40px; padding: 18px 48px;">
+    <a href="#top" style="margin-right: auto; display: block;"><img src="./logo.png" alt="Solomon Matters" style="height: 34px; width: auto;"></a>
+    <nav style="display: flex; gap: 28px; align-items: center;">
+      <a href="#services" style="color: inherit; text-decoration: none; font-size: 14px; letter-spacing: 0.01em;">Services</a>
+      <a href="#capabilities" style="color: inherit; text-decoration: none; font-size: 14px; letter-spacing: 0.01em;">Capabilities</a>
+      <a href="#process" style="color: inherit; text-decoration: none; font-size: 14px; letter-spacing: 0.01em;">How it works</a>
+      <a href="#faq" style="color: inherit; text-decoration: none; font-size: 14px; letter-spacing: 0.01em;">FAQ</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary" style="padding: 11px 20px;">Book a consultation</a>
+  </header>
+
+  <section id="top" style="display: grid; grid-template-columns: 1.05fr minmax(0, 0.95fr); border-bottom: 2px solid var(--color-divider);">
+    <div style="padding: 88px 48px 72px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; align-items: flex-start; gap: 28px;">
+      <div data-reveal style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-700);">Independent smart home consulting</div>
+      <h1 data-reveal style="font-size: clamp(38px, 5.2vw, 62px); line-height: 1.02; letter-spacing: -0.03em; max-width: 15ch; margin: 0;">Decide once. Live with it for years.</h1>
+      <p data-reveal style="font-size: 19px; line-height: 1.5; max-width: 46ch; margin: 0; color: var(--color-neutral-800);">We plan the smart home you actually want — one room at a time, on hardware you choose, with nobody paying us to recommend it. You keep the plan, the passwords and the freedom to hire anyone.</p>
+      <div data-reveal style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <a href="#contact" class="btn btn-primary" style="padding: 14px 24px; font-size: 15px;">Book a consultation</a>
+        <a href="#services" class="btn btn-secondary" style="padding: 14px 24px; font-size: 15px;">See what we do</a>
+      </div>
+      <div data-reveal style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 8px;">
+        <span class="tag tag-neutral">No installation upsell</span>
+        <span class="tag tag-neutral">No vendor commissions</span>
+        <span class="tag tag-neutral">Works with what you own</span>
+      </div>
+    </div>
+    <div class="grayscale" style="position: relative; height: 100%; min-height: 560px; max-height: 720px; overflow: hidden;">
+      <image-slot id="sm-hero" style="width: 100%; height: 100%" shape="rect" placeholder="hero photograph — a lived-in room, hardware barely visible"></image-slot>
+    </div>
+  </section>
+
+  <section id="services" style="border-bottom: 2px solid var(--color-divider);">
+    <div style="padding: 56px 48px 28px; display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h6 style="margin: 0; color: var(--color-neutral-700);">01 — What we do</h6>
+      <h2 data-reveal style="margin: 0; font-size: clamp(27px, 3vw, 36px); letter-spacing: -0.02em; max-width: 30ch;">Three ways to work with us</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--color-divider);">
+      <div data-reveal style="padding: 40px 40px 48px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.1em; color: var(--color-accent-700);">DESIGN &amp; SPECIFICATION</div>
+        <h3 style="margin: 0; font-size: 26px; letter-spacing: -0.02em;">A plan you can hand to anyone</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-neutral-800);">Room-by-room drawings, a named product list with prices, network layout and switch labels. Do it yourself or give it to your electrician — the plan is yours either way.</p>
+        <div style="margin-top: auto; padding-top: 24px; font-size: 13px; color: var(--color-neutral-700);">Deliverable: plan set + product schedule</div>
+      </div>
+      <div data-reveal style="padding: 40px 40px 48px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.1em; color: var(--color-accent-700);">SECOND OPINIONS</div>
+        <h3 style="margin: 0; font-size: 26px; letter-spacing: -0.02em;">Read the quote before you sign</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-neutral-800);">Send us the proposal on your desk. We tell you what is fairly priced, what is padded, what is proprietary, and what you will regret in three years.</p>
+        <div style="margin-top: auto; padding-top: 24px; font-size: 13px; color: var(--color-neutral-700);">Deliverable: written review + call</div>
+      </div>
+      <div data-reveal style="padding: 40px 40px 48px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.1em; color: var(--color-accent-700);">ONGOING SUPPORT</div>
+        <h3 style="margin: 0; font-size: 26px; letter-spacing: -0.02em;">Someone to call when it breaks</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-neutral-800);">A yearly plan: firmware and app updates handled, new devices added to the plan, and a real person on the phone when the lights stop answering.</p>
+        <div style="margin-top: auto; padding-top: 24px; font-size: 13px; color: var(--color-neutral-700);">Deliverable: annual care plan</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities" style="border-bottom: 2px solid var(--color-divider);">
+    <div style="padding: 56px 48px 28px; display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h6 style="margin: 0; color: var(--color-neutral-700);">02 — Capabilities</h6>
+      <h2 data-reveal style="margin: 0; font-size: clamp(27px, 3vw, 36px); letter-spacing: -0.02em; max-width: 34ch;">It starts with the network. Everything else is downstream.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--color-divider);">
+      <div data-reveal style="padding: 44px 44px 52px; border-right: 2px solid var(--color-divider); border-bottom: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; color: var(--color-accent);">01</span>
+          <h3 style="margin: 0; font-size: 30px; letter-spacing: -0.02em;">Networking &amp; Wi-Fi</h3>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6; max-width: 48ch; color: var(--color-neutral-800);">Coverage planned against your floor plan and your walls, not guessed. Wired backhaul where it matters, one guest network, one network for devices that should never see the rest of the house.</p>
+        <ul style="margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; color: var(--color-neutral-800);">
+          <li style="border-top: 1px solid var(--color-divider); padding-top: 8px;">Access point placement &amp; cabling plan</li>
+          <li style="border-top: 1px solid var(--color-divider); padding-top: 8px;">Device isolation for cameras and TVs</li>
+          <li style="border-top: 1px solid var(--color-divider); padding-top: 8px;">Naming, labels and a written map of it all</li>
+        </ul>
+      </div>
+      <div data-reveal style="padding: 44px 44px 52px; border-bottom: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; color: var(--color-accent);">02</span>
+          <h3 style="margin: 0; font-size: 30px; letter-spacing: -0.02em;">Voice control</h3>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6; max-width: 48ch; color: var(--color-neutral-800);">One assistant, chosen on purpose, with names your family will actually say. We write the room and device naming scheme first — that is the difference between voice control that sticks and voice control you stop using.</p>
+        <ul style="margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; color: var(--color-neutral-800);">
+          <li style="border-top: 1px solid var(--color-divider); padding-top: 8px;">Platform choice, without lock-in traps</li>
+          <li style="border-top: 1px solid var(--color-divider); padding-top: 8px;">Room, scene and routine naming scheme</li>
+          <li style="border-top: 1px solid var(--color-divider); padding-top: 8px;">Local fallbacks for when the cloud is out</li>
+        </ul>
+      </div>
+      <div data-reveal style="padding: 32px 44px 40px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-700);">Also specified</div>
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 20px; letter-spacing: -0.01em;">Lighting &amp; shades · Cameras &amp; locks · Climate</div>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; max-width: 50ch; color: var(--color-neutral-800);">Specified when a room calls for it — never all at once, and never before the network is right.</p>
+      </div>
+      <div data-reveal class="grayscale" style="position: relative; height: 100%; min-height: 260px; overflow: hidden;">
+        <image-slot id="sm-detail" style="width: 100%; height: 100%" shape="rect" placeholder="detail photograph — a switch plate, rack, or keypad"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="border-bottom: 2px solid var(--color-divider);">
+    <div style="padding: 56px 48px 28px; display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h6 style="margin: 0; color: var(--color-neutral-700);">03 — How it works</h6>
+      <h2 data-reveal style="margin: 0; font-size: clamp(27px, 3vw, 36px); letter-spacing: -0.02em; max-width: 30ch;">One room at a time, in the right order</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--color-divider);">
+      <div data-reveal style="padding: 36px 32px 44px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 34px; letter-spacing: -0.03em; color: var(--color-neutral-400);">01</span>
+        <h4 style="margin: 0; font-size: 19px;">Walkthrough</h4>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--color-neutral-800);">Ninety minutes in your home. What annoys you, what you own, where the wires already run.</p>
+      </div>
+      <div data-reveal style="padding: 36px 32px 44px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 34px; letter-spacing: -0.03em; color: var(--color-neutral-400);">02</span>
+        <h4 style="margin: 0; font-size: 19px;">Priority order</h4>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--color-neutral-800);">A sequence of rooms and a budget for each, so this year's work does not have to be undone next year.</p>
+      </div>
+      <div data-reveal style="padding: 36px 32px 44px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 34px; letter-spacing: -0.03em; color: var(--color-neutral-400);">03</span>
+        <h4 style="margin: 0; font-size: 19px;">The plan</h4>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--color-neutral-800);">Drawings, product list, wiring notes. Yours to keep, quote from, and reuse.</p>
+      </div>
+      <div data-reveal style="padding: 36px 32px 44px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 34px; letter-spacing: -0.03em; color: var(--color-neutral-400);">04</span>
+        <h4 style="margin: 0; font-size: 19px;">Stay in touch</h4>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--color-neutral-800);">We review installer quotes, check the finished work, and pick it up again with the next room.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--color-accent); color: var(--color-bg); padding: 84px 48px; border-bottom: 2px solid var(--color-divider);">
+    <p data-reveal style="margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.06; letter-spacing: -0.03em; max-width: 26ch;">We sell nothing but the plan. That is the whole point.</p>
+  </section>
+
+  <section id="faq" style="border-bottom: 2px solid var(--color-divider); display: grid; grid-template-columns: 0.75fr minmax(0, 1.25fr);">
+    <div style="padding: 56px 48px; border-right: 2px solid var(--color-divider);">
+      <h6 style="margin: 0 0 16px; color: var(--color-neutral-700);">04 — FAQ</h6>
+      <h2 style="margin: 0; font-size: 34px; letter-spacing: -0.02em;">Questions we get first</h2>
+    </div>
+    <div style="padding: 24px 48px 40px;">
+      <details data-reveal style="border-bottom: 1px solid var(--color-divider); padding: 22px 0;">
+        <summary style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; letter-spacing: -0.01em;">Do you install the equipment yourself?<span class="sm-plus" style="flex: none; font-size: 22px; line-height: 1; color: var(--color-accent); transition: transform 180ms ease;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; max-width: 62ch; color: var(--color-neutral-800);">No — and that is deliberate. We design and specify; you hire whoever you like to install, including yourself. Because we do not sell labour or hardware, nothing in the plan exists to fill our calendar.</p>
+      </details>
+      <details data-reveal style="border-bottom: 1px solid var(--color-divider); padding: 22px 0;">
+        <summary style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; letter-spacing: -0.01em;">Is this only for whole-house projects?<span class="sm-plus" style="flex: none; font-size: 22px; line-height: 1; color: var(--color-accent); transition: transform 180ms ease;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; max-width: 62ch; color: var(--color-neutral-800);">Most of our work is one room at a time. A single consultation on the kitchen is a perfectly normal engagement — we just make sure that room fits a plan the rest of the house can grow into.</p>
+      </details>
+      <details data-reveal style="border-bottom: 1px solid var(--color-divider); padding: 22px 0;">
+        <summary style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; letter-spacing: -0.01em;">Do I have to replace what I already own?<span class="sm-plus" style="flex: none; font-size: 22px; line-height: 1; color: var(--color-accent); transition: transform 180ms ease;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; max-width: 62ch; color: var(--color-neutral-800);">Rarely. We start from an inventory of your current devices and keep everything that still earns its place. Replacements get a reason written next to them.</p>
+      </details>
+      <details data-reveal style="border-bottom: 1px solid var(--color-divider); padding: 22px 0;">
+        <summary style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; letter-spacing: -0.01em;">What does a consultation cost?<span class="sm-plus" style="flex: none; font-size: 22px; line-height: 1; color: var(--color-accent); transition: transform 180ms ease;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; max-width: 62ch; color: var(--color-neutral-800);">A flat fee, quoted before we start and based on the size of the home and the number of rooms in scope. Second opinions on an existing quote are a fixed price.</p>
+      </details>
+      <details data-reveal style="padding: 22px 0;">
+        <summary style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; letter-spacing: -0.01em;">Will it still work if a company shuts down?<span class="sm-plus" style="flex: none; font-size: 22px; line-height: 1; color: var(--color-accent); transition: transform 180ms ease;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; max-width: 62ch; color: var(--color-neutral-800);">We favour open standards and local control, so lights, locks and climate keep working without an internet connection or a subscription. Where a cloud service is unavoidable, we say so in writing.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-bottom: 2px solid var(--color-divider);">
+    <div style="padding: 64px 48px; border-right: 2px solid var(--color-divider); display: flex; flex-direction: column; align-items: flex-start; gap: 20px;">
+      <h6 style="margin: 0; color: var(--color-neutral-700);">05 — Start here</h6>
+      <h2 style="margin: 0; font-size: 42px; line-height: 1.05; letter-spacing: -0.03em; max-width: 20ch;">Book a consultation</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; max-width: 42ch; color: var(--color-neutral-800);">Tell us the room that is bothering you. We will reply with a time, a flat fee, and exactly what you get for it.</p>
+      <div style="margin-top: 8px; display: grid; gap: 6px; font-size: 15px;">
+        <a href="mailto:hello@solomonmatters.com">hello@solomonmatters.com</a>
+        <span class="text-muted">Mon–Fri, replies within one business day</span>
+      </div>
+    </div>
+    <form onSubmit="{{ onSubmit }}" style="padding: 64px 48px; display: grid; gap: 18px; align-content: start;">
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px;">
+        <div class="field"><label for="sm-name">Name</label><input id="sm-name" class="input" placeholder="Your name"></div>
+        <div class="field"><label for="sm-email">Email</label><input id="sm-email" class="input" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="field"><label for="sm-room">Which room, or what is not working?</label><textarea id="sm-room" class="input" placeholder="The kitchen lights, the Wi-Fi upstairs, a quote I don't trust…"></textarea></div>
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <button type="submit" class="btn btn-primary" style="padding: 14px 24px; font-size: 15px;">{{ submitLabel }}</button>
+        <span class="text-muted" style="font-size: 13px;">No sales calls. Ever.</span>
+      </div>
+    </form>
+  </section>
+
+  <footer style="padding: 36px 48px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap;">
+    <img src="./logo.png" alt="Solomon Matters" style="height: 26px; width: auto; opacity: 0.85;">
+    <span class="text-muted" style="font-size: 13px; margin-right: auto;">Independent smart home design &amp; consulting</span>
+    <span class="text-muted" style="font-size: 13px;">© 2026 Solomon Matters</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Request a consultation&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;revealOnScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false };
+  rootRef = React.createRef();
+
+  componentDidMount() {
+    const root = this.rootRef.current || document;
+    const nodes = Array.from(root.querySelectorAll('[data-reveal]'));
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    if (this.props.revealOnScroll === false || !('IntersectionObserver' in window)) {
+      nodes.forEach(show);
+      return;
+    }
+    nodes.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 620ms cubic-bezier(.2,.7,.2,1) ' + (i % 4) * 70 + 'ms, transform 620ms cubic-bezier(.2,.7,.2,1) ' + (i % 4) * 70 + 'ms';
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    nodes.forEach((el) => io.observe(el));
+    this._io = io;
+    this._fallback = setTimeout(() => nodes.forEach(show), 2500);
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._fallback);
+  }
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      submitLabel: this.state.sent ? 'Thank you — we\u2019ll be in touch' : (this.props.ctaLabel ?? 'Request a consultation'),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
