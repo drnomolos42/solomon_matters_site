@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1080p Gaming Build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a friend's honest build sheet: direct, practical, no hype.
+   IDEA: a printed parts manifest taped inside the case, each slot ticked or swapped.
+   PICTURE: an exploded schematic of the mATX case with each part placed where it lives.
+   COLOUR and TYPE: ice ground, ink text, one hot pink for swaps; Space Grotesk + Inter.
+   LAYOUT: verdict + schematic first screen, then the manifest table, then notes and disclosure. */
+:root{color-scheme:light dark;--bg:light-dark(#dff1f7,#06222e);--ink:light-dark(#06222e,#dff1f7);--soft:light-dark(#3d5f6c,#9fc3cf);--card:light-dark(#f4fbfd,#0b3040);--line:light-dark(#b7d9e4,#1c4a5c);--pink:#ff2e7e;--ok:light-dark(#0b6b5a,#5fd8bd)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,5vw,52px)}h2{font-size:28px;margin-bottom:16px}h3{font-size:18px}
+a{color:inherit}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.lede{font-size:17px;color:var(--soft);max-width:60ch;margin:16px 0 24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:10px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.fig svg{width:100%;height:auto;display:block}
+.manifest{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--soft);font-weight:600}
+tr:last-child td{border-bottom:0}
+.slot{font-weight:600;white-space:nowrap}
+.pick b{display:block}
+.was{font-size:13px;color:var(--soft);margin-top:4px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.keep{color:var(--ok);border:1px solid currentColor}
+.swap{color:#fff;background:var(--pink)}
+.add{color:var(--ink);border:1px dashed var(--soft)}
+.why{color:var(--soft);font-size:15px}
+.buy{white-space:nowrap}.buy a{font-weight:600}
+.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td.num{font-weight:600}
+tfoot td{border-top:2px solid var(--ink);border-bottom:0;font-weight:700}
+@media(max-width:600px){.stack td.num{text-align:start}.stack tfoot td:nth-child(2){display:none}}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
+.note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.note p{margin:8px 0 0;color:var(--soft);font-size:15px}
+.disc{font-size:13px;color:var(--soft);border-top:1px solid var(--line)}
+@media(max-width:820px){.hero{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 16px;padding-inline-start:calc(7em + 16px);text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;white-space:normal;color:var(--soft);font-size:13px}.stack td:empty{display:none}}
+@media(prefers-reduced-motion:no-preference){.glow{animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.35}}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<section class="band"><div class="wrap hero">
+  <div>
+    <h1>A compact, quiet PC built for heavily modded Sims 4</h1>
+    <p class="lede">A Ryzen 5 9600X in a Lian Li A3 case, built for 1080p at high refresh rates. Every part is a specific model, chosen for a heavily modded Sims 4 setup: a fast processor for simulation-heavy saves, a quick NVMe drive for big Mods folders, and a quiet air-cooled build.</p>
+    <div class="chips"><span class="chip">Sims 4 + mods at max settings</span><span class="chip">DLSS 4 frame generation</span><span class="chip">AM5 upgrade path</span><span class="chip">About 350 W at full load</span></div>
+    <a class="btn" id="cartBtn" href="#">Add every part to Amazon cart</a>
+  </div>
+  <div class="fig" aria-label="Schematic of the parts inside the case">
+    <svg viewBox="0 0 520 400" role="img">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b3040"/><stop offset="1" stop-color="#06222e"/></linearGradient></defs>
+      <rect x="40" y="24" width="440" height="352" rx="18" fill="url(#g)" stroke="#5fd8bd" stroke-opacity=".35"/>
+      <rect x="60" y="38" width="400" height="16" rx="4" fill="#1c4a5c"/>
+      <g fill="#0f3d50" stroke="#2c6a80"><circle cx="140" cy="46" r="0"/></g>
+      <rect x="70" y="72" width="250" height="220" rx="8" fill="#123f52" stroke="#2c6a80"/>
+      <rect x="150" y="100" width="70" height="70" rx="6" fill="#dff1f7"/>
+      <rect x="236" y="96" width="14" height="80" rx="3" fill="#ff2e7e"/><rect x="256" y="96" width="14" height="80" rx="3" fill="#ff2e7e"/>
+      <rect x="96" y="190" width="80" height="12" rx="3" fill="#ff2e7e"/>
+      <rect x="80" y="220" width="300" height="50" rx="8" fill="#ff2e7e"/>
+      <circle cx="160" cy="245" r="17" fill="#06222e"/><circle cx="300" cy="245" r="17" fill="#06222e"/>
+      <rect x="350" y="80" width="110" height="150" rx="8" fill="#ff2e7e" opacity=".9"/>
+      <g class="glow" fill="none" stroke="#ff2e7e" stroke-width="2"><circle cx="110" cy="330" r="18"/><circle cx="170" cy="330" r="18"/><circle cx="230" cy="330" r="18"/></g>
+      <g font-family="Inter,sans-serif" font-size="13" fill="#dff1f7">
+        <text x="185" y="190" text-anchor="middle">CPU</text>
+        <text x="253" y="90" text-anchor="middle">RAM</text>
+        <text x="96" y="214">SSD</text>
+        <text x="230" y="290" text-anchor="middle">Graphics card</text>
+        <text x="405" y="250" text-anchor="middle">Power supply</text>
+        <text x="300" y="336">Intake fans</text>
+      </g>
+    </svg>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2>Parts list</h2>
+  <div class="manifest"><table class="stack">
+    <thead><tr><th>Part</th><th>Pick</th><th>Why</th><th class="num">Est. price</th><th>Buy</th></tr></thead>
+    <tbody id="rows"></tbody>
+    <tfoot><tr><td class="slot">Total</td><td colspan="2" class="why">Estimated prices as of November 22, 2026. Memory and graphics card prices change week to week right now.</td><td class="num" id="total"></td><td></td></tr></tfoot>
+  </table></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2>Before you order</h2>
+  <div class="notes">
+    <div class="note"><h3>Update the BIOS first</h3><p>B850 boards ship ready for Ryzen 9000, but flashing the latest BIOS (Q-Flash Plus, no CPU needed) fixes memory and stability issues. Then turn on EXPO in the BIOS so the RAM runs at its rated 6000 MT/s.</p></div>
+    <div class="note"><h3>Is 16 GB enough for mods?</h3><p>Yes. Sims 4 loads only the custom content actually in use, so even a huge Mods folder rarely pushes it past about 10 GB. DDR5 costs several times what it did a year ago. If more memory is ever needed, replace both sticks with a 2×16 GB kit.</p></div>
+    <div class="note"><h3>Plan the case layout</h3><p>The A3 ships without fans. Put three intake fans on the bottom, one exhaust fan at the rear, and mount the ATX power supply at the front. The air cooler is 157 mm tall, which fits under the case's 165 mm limit.</p></div>
+    <div class="note"><h3>Don't forget Windows</h3><p>The list doesn't include an operating system. Budget for a Windows 11 Home license, or install Windows and activate it later.</p></div>
+  </div>
+</div></section>
+
+<footer class="band disc"><div class="wrap">
+  <p>As an Amazon Associate I earn from qualifying purchases. Links on this page are affiliate links: buying through them costs you nothing extra. Prices shown are estimates as of November 22, 2026 and change often. The price on Amazon at checkout is what you'll actually pay.</p>
+</div></footer>
+
+<script>
+{
+const TAG = "solomonmatter-20";
+const dp = a => `https://www.amazon.com/dp/${a}?tag=${TAG}`;
+const s = q => `https://www.amazon.com/s?k=${encodeURIComponent(q)}&tag=${TAG}`;
+const parts = [
+  {slot:"CPU", price:174, pick:"AMD Ryzen 5 9600X", st:"keep", why:"Six fast Zen 5 cores. Modded Sims 4 leans hard on single-core speed, which is where this chip is strongest, so big households and busy lots stay smooth.", url:dp("B0D6NN6TM7")},
+  {slot:"Motherboard", price:169, pick:"Gigabyte B850M AORUS Elite WIFI6E ICE", was:"Gigabyte B850M Gaming X WiFi6E", wasUrl:dp("B0DQLHLVLK"), st:"swap", why:"An all-white board to match the build, with stronger 12+2+2 power delivery, Wi-Fi 6E, 2.5 Gb Ethernet, two M.2 slots (one PCIe 5.0) and a 5-year warranty.", url:dp("B0DQLJGTRM")},
+  {slot:"Graphics card", price:519, pick:"ASUS Prime GeForce RTX 5060 8 GB (PRIME-RTX5060-8G)", was:"Gigabyte RTX 5060 OC Low Profile", wasUrl:dp("B0F8LNS15L"), st:"swap", why:"The same RTX 5060 chip as the original pick, in a full-size triple-fan card that runs cooler and quieter than the low-profile version. It has a dual BIOS with a quiet mode. It runs Sims 4 at max settings with lots of headroom.", url:dp("B0F77H7NBK")},
+  {slot:"Memory", price:268, pick:"G.Skill Flare X5 16 GB (2×8 GB) DDR5-6000 CL30 (F5-6000J3038F8GH2-FX5)", was:"PNY 16 GB DDR5-5600 CL46 (not on Amazon)", st:"swap", why:"DDR5-6000 CL30 is the sweet spot for Ryzen 9000, and this AMD EXPO kit is listed for B850 boards. Its short heat spreaders clear the tower cooler.", url:dp("B0G7PFF5N6")},
+  {slot:"Storage", price:190, pick:"SanDisk Optimus 5100 1 TB NVMe (SDSP51100TAN)", was:"WD Black 512 GB PCIe 3.0", wasUrl:dp("B01MR4VOBZ"), st:"swap", why:"A fast PCIe 4.0 drive with twice the space of the original pick and a 5-year warranty. Loading a save with a large Mods folder depends mostly on drive speed, and this drive reads at up to 7,100 MB/s.", url:dp("B0GJS98B1Q")},
+  {slot:"CPU cooler", price:35, pick:"Thermalright Peerless Assassin 120 White V3 (PA120 WHITE V3)", was:"Corsair Nautilus 360 RS AIO (not on Amazon)", st:"swap", why:"A dual-tower air cooler in white to match the case, with two 120 mm fans included. It keeps the 9600X cool and quiet with no pump to fail. At 157 mm tall, it fits under the case's 165 mm limit.", url:dp("B0DRFNVTN1")},
+  {slot:"Case", price:90, pick:"Lian Li A3-mATX", st:"keep", why:"A great compact mesh case that fits ATX or SFX power supplies and graphics cards up to 415 mm.", url:dp("B0DKSWRH91")},
+  {slot:"Case fans", price:21, pick:"Thermalright TL-C12CW-S 120 mm white ARGB, 5-pack", st:"add", why:"The A3 comes with no fans. These white fans match the case and the white Thermalright cooler. Use three as bottom intake and one as rear exhaust, and keep the fifth as a spare. The lighting connects to the motherboard's ARGB header and is optional.", url:dp("B0D9N6VWCG")},
+  {slot:"Power supply", price:90, pick:"Corsair RM750e (2025) 750 W, fully modular, white (CP-9020292-NA)", was:"Corsair SF850 SFX", wasUrl:dp("B0D45PQ8C4"), st:"swap", why:"The system draws about 350 W at most. This quiet, Gold-rated ATX unit fits the A3, matches the white build, and costs much less than the 850 W SFX one.", url:dp("B0DZXKXYGY")},
+  {slot:"Monitor", price:85, pick:"Dell SE2426HG 24\" 1080p 240 Hz", st:"keep", why:"A sharp 1080p screen at a great price, and smooth for anything faster-paced than Sims too.", url:dp("B0GKFLQ9SW")},
+];
+const label = {keep:"Keep", swap:"Swap", add:"Add"};
+document.getElementById("rows").innerHTML = parts.map(p => `<tr>
+  <td class="slot">${p.slot}</td>
+  <td class="pick"><b>${p.pick}</b>${p.was ? `<div class="was">Originally: ${p.wasUrl ? `<a href="${p.wasUrl}" rel="sponsored nofollow">${p.was}</a>` : p.was}</div>` : ""}</td>
+  <td class="why">${p.why}</td>
+  <td class="num">~$${p.price}</td>
+  <td class="buy"><a href="${p.url}" rel="sponsored nofollow">View on Amazon</a></td>
+</tr>`).join("");
+document.getElementById("total").textContent = "~$" + parts.reduce((t,p)=>t+p.price,0).toLocaleString("en-US");
+const kept = parts.map(p=>p.url.match(/dp\/(\w+)/)[1]);
+document.getElementById("cartBtn").href = "https://www.amazon.com/gp/aws/cart/add.html?AssociateTag=" + TAG + kept.map((a,i)=>`&ASIN.${i+1}=${a}&Quantity.${i+1}=1`).join("");
+}
+</script>
+</body>
+</html>
